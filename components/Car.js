@@ -1,29 +1,44 @@
 import React from "react";
-import { StyleSheet, Text, View, ImageBackground } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  ImageBackground,
+  Dimensions,
+} from "react-native";
 import Button from "./Button";
 
-const Car = ({ title, subtitle, img }) => {
+const Car = ({ name, tagline, img, taglineCTA }) => {
   return (
     <View style={styles.carContainer}>
-      <ImageBackground
-        source={require("../assets/ModelX.jpeg")}
-        style={styles.image}
-      />
+      <ImageBackground source={img} style={styles.image} />
 
       <View style={styles.titles}>
-        <Text style={styles.heading}>{title}</Text>
-        <Text style={styles.subHeading}>{subtitle}</Text>
+        <Text style={styles.heading}>{name}</Text>
+        <Text style={styles.subHeading}>
+          {tagline} <Text style={styles.subHeadingCTA}>{taglineCTA}</Text>
+        </Text>
       </View>
-      <Button
-        content={"Custom Order"}
-        type="primary"
-        onPress={() => console.warn("Custom Order")}
-      />
-      <Button
-        content={"Existing Inventory"}
-        type="secondary"
-        onPress={() => console.warn("Existing Inventory")}
-      />
+
+      {/* <Car
+      name="Model X"
+      tagline="Order Online for"
+      taglineCTA="Touchless Delivery"
+      img={require("./assets/ModelX.jpeg")}
+    /> */}
+
+      <View style={styles.buttonContainer}>
+        <Button
+          content={"Custom Order"}
+          type="primary"
+          onPress={() => console.warn("Custom Order")}
+        />
+        <Button
+          content={"Existing Inventory"}
+          type="secondary"
+          onPress={() => console.warn("Existing Inventory")}
+        />
+      </View>
     </View>
   );
 };
@@ -33,7 +48,7 @@ export default Car;
 const styles = StyleSheet.create({
   carContainer: {
     width: "100%",
-    height: "100%",
+    height: Dimensions.get("screen").height,
   },
   titles: {
     marginTop: "30%",
@@ -47,10 +62,19 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: "#5c5e62",
   },
+  subHeadingCTA: {
+    textDecorationLine: "underline",
+  },
   image: {
     width: "100%",
     height: "100%",
     resizeMode: "cover",
     position: "absolute",
+  },
+  buttonContainer: {
+    position: "absolute",
+    bottom: 50,
+    width: "100%",
+    padding: 10,
   },
 });

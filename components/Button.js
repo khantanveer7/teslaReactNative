@@ -2,7 +2,6 @@ import React from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 
 const Button = ({ type, content, onPress }) => {
-  //   console.warn(type);
   const button = type;
   const backgroundColor = button === "primary" ? "#171A20CC" : "#FFFFFFA6";
   const textColor = button === "primary" ? "#FFFFFF" : "#171A20";
@@ -23,7 +22,8 @@ export default Button;
 const styles = StyleSheet.create({
   container: {
     width: "100%",
-    padding: 20,
+
+    padding: 10,
   },
   button: {
     height: 40,
