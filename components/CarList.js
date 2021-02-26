@@ -7,6 +7,7 @@ const CarList = () => {
   return (
     <View style={styles.container}>
       <FlatList
+        keyExtractor={(item, index) => index.toString()}
         data={carData}
         renderItem={({ item }) => (
           <Car
